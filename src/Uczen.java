@@ -2,7 +2,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class Uczen {
+public class Uczen implements OsobaEdukacyjna {
     private String imie;
     private String nazwisko;
     private int wiek;
@@ -12,6 +12,10 @@ public class Uczen {
     List<Kurs> kursy;
 
     public Uczen(String imie, String nazwisko, int wiek, String klasa) {
+        if (imie == null || imie.isEmpty() || nazwisko == null || nazwisko.isEmpty() || wiek < 0 || wiek > 120) {
+            throw new IllegalArgumentException("Nieprawidłowe dane ucznia");
+        }
+
         this.imie = imie;
         this.nazwisko = nazwisko;
         this.wiek = wiek;
@@ -28,6 +32,7 @@ public class Uczen {
         return kursy.stream().map(Kurs::getNazwa).collect(Collectors.toList());
     }
 
+    @Override
     public String getImie() {
         return imie;
     }
@@ -36,6 +41,7 @@ public class Uczen {
         this.imie = imie;
     }
 
+    @Override
     public String getNazwisko() {
         return nazwisko;
     }
@@ -44,6 +50,7 @@ public class Uczen {
         this.nazwisko = nazwisko;
     }
 
+    @Override
     public int getWiek() {
         return wiek;
     }

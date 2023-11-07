@@ -1,3 +1,6 @@
+import java.util.ArrayList;
+import java.util.List;
+
 public class Main {
     public static void main(String[] args) {
 
@@ -37,6 +40,18 @@ public class Main {
     Uczen u14 = new Uczen("Mateusz","Dresowski",19, "4C");
     Uczen u15 = new Uczen("Kamil","Kawal",20, "3B");
 
+    KlasaLekcyjna klasa1A = new KlasaLekcyjna("1A");
+    KlasaLekcyjna klasa1B = new KlasaLekcyjna("1B");
+    KlasaLekcyjna klasa2A = new KlasaLekcyjna("2A");
+    KlasaLekcyjna klasa2B = new KlasaLekcyjna("2B");
+    KlasaLekcyjna klasa3A = new KlasaLekcyjna("3A");
+
+    klasa1A.przypiszNauczyciela(n1);
+    klasa1A.przypiszNauczyciela(n2);
+    klasa1B.przypiszNauczyciela(n3);
+    klasa2A.przypiszNauczyciela(n4);
+    klasa2B.przypiszNauczyciela(n5);
+
     u1.dodajkurs(kursfizyczny);
     u2.dodajkurs(kursmatematyki);
     u3.dodajkurs(kursmatematyki);
@@ -69,6 +84,17 @@ public class Main {
     szkola.dodajucznia(u14);
     szkola.dodajucznia(u15);
 
+    List<OsobaEdukacyjna> osoby = new ArrayList<>();
+        osoby.add(new Uczen("Marek", "Markowicz", 17, "1B"));
+        osoby.add(new Nauczyciel("Adam", "Adamowicz", 84, "Matematyka"));
+
+
+        for (OsobaEdukacyjna osoba : osoby) {
+            System.out.println("Imię: " + osoba.getImie());
+            System.out.println("Nazwisko: " + osoba.getNazwisko());
+            System.out.println("Wiek: " + osoba.getWiek());
+        }
+
         System.out.println("Liczba uczniów: " + Uczen.podajliczbeuczniow());
         System.out.println("Liczba nauczycieli: " + Nauczyciel.podajliczbenauczycieli());
 
@@ -77,6 +103,8 @@ public class Main {
 
         szkola.sortujnauczycielipoimieniu();
         System.out.println("Posortowani nauczyciele: " + szkola.nauczyciels);
+
+        System.out.println("Nauczyciele w klasie 1A: " + klasa1A.getNauczyciele());
 
 
     }

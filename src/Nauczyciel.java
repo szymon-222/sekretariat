@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 import java.util.List;
 
-public class Nauczyciel {
+public class Nauczyciel implements OsobaEdukacyjna {
     private String imie;
     private String nazwisko;
     private int wiek;
@@ -11,6 +11,10 @@ public class Nauczyciel {
     List<Kurs> kursy;
 
     public Nauczyciel(String imie, String nazwisko, int wiek, String przedmiot) {
+        if (imie == null || imie.isEmpty() || nazwisko == null || nazwisko.isEmpty() || wiek < 0 || wiek > 120) {
+            throw new IllegalArgumentException("Nieprawidłowe dane nauczyciela");
+        }
+
         this.imie = imie;
         this.nazwisko = nazwisko;
         this.wiek = wiek;
@@ -19,10 +23,11 @@ public class Nauczyciel {
         liczbanauczycieli++;
     }
 
+
     public void dodajkurs(Kurs kurs){
         kursy.add(kurs);
     }
-
+    @Override
     public String getImie() {
         return imie;
     }
@@ -30,7 +35,7 @@ public class Nauczyciel {
     public void setImie(String imie) {
         this.imie = imie;
     }
-
+    @Override
     public String getNazwisko() {
         return nazwisko;
     }
@@ -38,7 +43,7 @@ public class Nauczyciel {
     public void setNazwisko(String nazwisko) {
         this.nazwisko = nazwisko;
     }
-
+    @Override
     public int getWiek() {
         return wiek;
     }
