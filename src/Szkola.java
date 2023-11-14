@@ -48,6 +48,89 @@ public class Szkola {
         nauczyciels.sort(Comparator.comparing(Nauczyciel::getImie));
     }
 
+    public void wyswietlUczniowKlasy() {
+        for (Uczen uczen : uczens) {
+            System.out.println(uczen);
+        }
+    }
+
+    public void wyswietlNauczycieli() {
+        for (Nauczyciel nauczyciel : nauczyciels) {
+            System.out.println(nauczyciel);
+        }
+    }
+    public void wyswietlNauczycieliDyscypliny(String dyscyplina) {
+        for (Nauczyciel nauczyciel : nauczyciels) {
+            if (nauczyciel.getPrzedmiot().equalsIgnoreCase(dyscyplina)) {
+                System.out.println(nauczyciel);
+            }
+        }
+    }
+
+    public void wyswietlUczniowPrzedmiotu(String przedmiot) {
+        for (Uczen uczen : uczens) {
+            if (uczen.pokaznazwekursu().contains(przedmiot)) {
+                System.out.println(uczen);
+            }
+        }
+    }
+    public double obliczSredniWiekUczniow() {
+        if (uczens.isEmpty()) {
+            return 0.0;
+        }
+
+        double sumaWieku = 0.0;
+        for (Uczen uczen : uczens) {
+            sumaWieku += uczen.getWiek();
+        }
+
+        return sumaWieku / uczens.size();
+    }
+
+    public double obliczSredniWiekNauczycieli() {
+        if (nauczyciels.isEmpty()) {
+            return 0.0;
+        }
+
+        double sumaWieku = 0.0;
+        for (Nauczyciel nauczyciel : nauczyciels) {
+            sumaWieku += nauczyciel.getWiek();
+        }
+
+        return sumaWieku / nauczyciels.size();
+    }
+
+    public Uczen znajdzNajstarszegoUcznia() {
+        if (uczens.isEmpty()) {
+            return null;
+        }
+
+        Uczen najstarszyUczen = uczens.get(0);
+        for (Uczen uczen : uczens) {
+            if (uczen.getWiek() > najstarszyUczen.getWiek()) {
+                najstarszyUczen = uczen;
+            }
+        }
+
+        return najstarszyUczen;
+    }
+
+    public Nauczyciel znajdzNajmlodszegoNauczyciela() {
+        if (nauczyciels.isEmpty()) {
+            return null;
+        }
+
+        Nauczyciel najmlodszyNauczyciel = nauczyciels.get(0);
+        for (Nauczyciel nauczyciel : nauczyciels) {
+            if (nauczyciel.getWiek() < najmlodszyNauczyciel.getWiek()) {
+                najmlodszyNauczyciel = nauczyciel;
+            }
+        }
+
+        return najmlodszyNauczyciel;
+    }
+
+
 
 
 

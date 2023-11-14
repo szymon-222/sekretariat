@@ -26,4 +26,20 @@ public class KlasaLekcyjna {
     public List<Nauczyciel> getNauczyciele() {
         return nauczyciele;
     }
+
+    public String getNazwa() {
+        return nazwa;
+    }
+
+    public void setNazwa(String nazwa) {
+        this.nazwa = nazwa;
+    }
+
+    public void setNauczyciele(List<Nauczyciel> nauczyciele) {
+        this.nauczyciele = nauczyciele;
+    }
+
+    public void setUczniowie(List<Uczen> uczniowie) {
+        this.uczniowie = uczniowie;
+    }
 }
